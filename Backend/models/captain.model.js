@@ -53,7 +53,7 @@ const captainSchema = new mongoose.Schema({
         vehicleType: {
             type: String,
             required: true,
-            enum: ['Car', 'Bike', 'Auto'], // Ensuring consistent casing
+            enum: ['car', 'bike', 'moto'], // Ensuring consistent casing
         },
         location: {
             lat: {
@@ -64,6 +64,15 @@ const captainSchema = new mongoose.Schema({
             },
         },
     },
+});
+
+// Pre-save hook to normalize vehicleType (capitalize first letter)
+captainSchema.pre('save', function (next) {
+    if (this.vehicle && this.vehicle.vehicleType) {
+        // Normalize vehicleType to capitalize first letter
+        this.vehicle.vehicleType = this.vehicle.vehicleType.charAt(0).toUpperCase() + this.vehicle.vehicleType.slice(1).toLowerCase();
+    }
+    next();
 });
 
 captainSchema.methods.generateAuthToken = function () {
