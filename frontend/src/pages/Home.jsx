@@ -4,13 +4,16 @@ import { gsap } from 'gsap';
 import { useRef } from 'react';
 import 'remixicon/fonts/remixicon.css'
 import LocationSearchPanel from '../components/LocationSearchPanel';
+import VehiclePanel from '../components/VehiclePanel';
 
 const Home = () => {
     const [pickup, setPickup] = useState('')
     const [destination, setDestination] = useState('')
     const [panelOpen, setPanelOpen] = useState(false)
+    const vehiclePanelRef = useRef(null)
     const panelRef = useRef(null)
     const panelCloseRef = useRef(null)
+    const [vehiclePanel, setVehiclePanel] = useState(false)
 
 
 
@@ -23,8 +26,8 @@ const Home = () => {
         if (panelOpen) {
             gsap.to(panelRef.current, {
                 height: '70%',
-                padding:24
-               // opacity: 1
+                padding: 24
+                // opacity: 1
             })
             gsap.to(panelCloseRef.current, {
                 opacity: 1
@@ -32,7 +35,7 @@ const Home = () => {
         } else {
             gsap.to(panelRef.current, {
                 height: 0,
-                padding:0
+                padding: 0
                 // opacity: 1
             })
             gsap.to(panelCloseRef.current, {
@@ -42,8 +45,21 @@ const Home = () => {
 
     }, [panelOpen])
 
+    useGSAP(function () {
+        if (vehiclePanel) {
+            gsap.to(vehiclePanelRef.current, {
+                transform: 'translateY(0)'
+            })
+        } else {
+            gsap.to(vehiclePanelRef.current, {
+                transform: 'translateY(100%)'
+            })
+        }
+    }, [vehiclePanel])
+
+
     return (
-        <div className='h-screen relative'>
+        <div className='h-screen relative overflow-hidden'>
             <img className='w-16 absolute left-5 top-5' src="https://upload.wikimedia.org/wikipedia/commons/5/58/Uber_logo_2018.svg" alt="" />
 
             <div className='h-screen w-screen'>
@@ -85,10 +101,14 @@ const Home = () => {
                     </form>
                 </div>
                 <div ref={panelRef} className=' bg-white h-0 '>
-                    <LocationSearchPanel />
+                    <LocationSearchPanel panelOpen={panelOpen} setPanelOpen={setPanelOpen} vehiclePanel={vehiclePanel} setVehiclePanel={setVehiclePanel} />
                 </div>
             </div>
+            <div ref={vehiclePanelRef} className='fixed w-full z-10 bottom-0 translate-y-full bg-white px-3 py-10 pt-14'>
 
+                <VehiclePanel setVehiclePanel={setVehiclePanel} />
+
+            </div>
         </div>
     );
 };
