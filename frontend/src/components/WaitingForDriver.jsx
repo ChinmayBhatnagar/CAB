@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WaitForDriver = () => {
+const WaitingForDriver = () => {
     return (
         <div>
             <h1>Waiting for Driver...</h1>
@@ -8,4 +8,4 @@ const WaitForDriver = () => {
     );
 };
 
-export default WaitForDriver;
+export default WaitingForDriver;
