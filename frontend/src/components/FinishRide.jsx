@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const RidePopUp = (props) => {
+const FinishRide = (props) => {
     return (
-        <div>
+        <div >
             <h5
                 className="p-1 text-center w-[93%] absolute top-0 "
                 onClick={() => {
-                    props.setRidePopUpPanel(false)
-                }} 
+                    props.setFinishRidePanel(false)
+                }}
             >
                 <i className="text-3xl text-gray-200 ri-arrow-down-wide-line"></i>
             </h5>
-            <h3 className="text-2xl font-semibold mb-5">Ride Available!</h3>
+            <h3 className="text-2xl font-semibold mb-5">Finish this Ride!</h3>
 
-            <div className='flex items-center justify-between mt-4 p-5 bg-yellow-400 rounded-lg'>
+            <div className='flex items-center justify-between mt-4 p-4 border-2 border-yellow-400 rounded-lg'>
                 <div className='flex items-center gap-3 '>
                     <img className='h-12 rounded-full object-cover w-12' src="https://i.pinimg.com/originals/8d/fe/2c/8dfe2c8ddc4b7df7bbf77b01c365974d.jpg" alt="" />
                     <h2 className='text-lg font-semibold'>Eloni Muski</h2>
@@ -47,20 +48,18 @@ const RidePopUp = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className='flex mt-5 w-full items-center justify-between'>
-                <button onClick={() => {
-                   
-                   props.setConfirmRidePopUpPanel(true)
-               }} className=' bg-green-600 text-white px-10 text-semibold p-3 rounded-lg'>Accept</button>
+                <form>
+                    <input type="text" />
+                </form>
+                <div className='mt-10 w-full'>
+                        <Link to='/captain-home' className='w-full flex justify-center mt-5 bg-green-600 text-white text-lg text-semibold p-3 rounded-lg'>Complete Ride</Link>
 
-               <button onClick={() => {
-                   props.setRidePopUpPanel(false)
+                        <p className='mt-10 text-xs'>Click on complete ride button if you have completed the payment</p>
 
-               }} className=' mt-1 bg-gray-300 text-gray-700 px-10 text-semibold p-3 rounded-lg'>Ignore</button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default RidePopUp;
+export default FinishRide;
