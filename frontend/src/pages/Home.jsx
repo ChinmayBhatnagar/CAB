@@ -8,6 +8,7 @@ import VehiclePanel from '../components/VehiclePanel';
 import ConfirmRide from '../components/ConfirmRide';
 import LookingForDriver from '../components/LookingForDriver';
 import WaitingForDriver from '../components/WaitingForDriver';
+import ConfirmRidePopUp from '../components/ConfirmRidePopUp';
 
 
 const Home = () => {

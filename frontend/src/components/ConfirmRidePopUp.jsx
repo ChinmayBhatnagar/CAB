@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RidePopUp = (props) => {
+const ConfirmRidePopUp = (props) => {
     return (
         <div>
             <h5
@@ -49,8 +49,8 @@ const RidePopUp = (props) => {
                 </div>
                 <button onClick={() => {
                    
-                    props.setConfirmRidePopUpPanel(true)
-                }} className='w-full mt-5 bg-green-600 text-white text-semibold p-2 rounded-lg'>Accept</button>
+
+                }} className='w-full mt-5 bg-green-600 text-white text-semibold p-2 rounded-lg'>Confirm</button>
 
                 <button onClick={() => {
                     props.setRidePopUpPanel(false)
@@ -61,4 +61,4 @@ const RidePopUp = (props) => {
     );
 };
 
-export default RidePopUp;
+export default ConfirmRidePopUp;
